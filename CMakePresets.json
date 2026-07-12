@@ -114,12 +114,14 @@
     {
       "name": "ci-linux",
       "configurePreset": "ci-linux",
-      "output": { "outputOnFailure": true }
+      "output": { "outputOnFailure": true },
+      "execution": { "timeout": 30 }
     },
     {
       "name": "ci-windows",
       "configurePreset": "ci-windows",
-      "output": { "outputOnFailure": true }
+      "output": { "outputOnFailure": true },
+      "execution": { "timeout": 30 }
     }
   ],
   "workflowPresets": [
