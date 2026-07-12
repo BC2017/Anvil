@@ -1,0 +1,159 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "ANVIL_BUILD_SANDBOX": "ON",
+        "ANVIL_WARNINGS_AS_ERRORS": "ON",
+        "BUILD_TESTING": "ON"
+      }
+    },
+    {
+      "name": "windows-msvc",
+      "displayName": "Windows MSVC (Visual Studio 2026)",
+      "inherits": "base",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64"
+    },
+    {
+      "name": "linux-clang",
+      "displayName": "Linux Clang (Ninja)",
+      "inherits": "base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "ANVIL_ENABLE_ASAN": "ON",
+        "ANVIL_ENABLE_UBSAN": "ON"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "ci-linux",
+      "displayName": "Linux CI",
+      "inherits": "linux-clang",
+      "cacheVariables": {
+        "ANVIL_ENABLE_CLANG_TIDY": "ON"
+      }
+    },
+    {
+      "name": "ci-windows",
+      "displayName": "Windows CI (Ninja)",
+      "inherits": "base",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows-msvc",
+      "configuration": "Debug",
+      "jobs": 0
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-msvc",
+      "configuration": "Release",
+      "jobs": 0
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-clang",
+      "jobs": 0
+    },
+    {
+      "name": "ci-linux",
+      "configurePreset": "ci-linux",
+      "jobs": 0
+    },
+    {
+      "name": "ci-windows",
+      "configurePreset": "ci-windows",
+      "jobs": 0
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows-msvc",
+      "configuration": "Debug",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-msvc",
+      "configuration": "Release",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-clang",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "ci-linux",
+      "configurePreset": "ci-linux",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "ci-windows",
+      "configurePreset": "ci-windows",
+      "output": { "outputOnFailure": true }
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "windows-debug",
+      "steps": [
+        { "type": "configure", "name": "windows-msvc" },
+        { "type": "build", "name": "windows-debug" },
+        { "type": "test", "name": "windows-debug" }
+      ]
+    },
+    {
+      "name": "windows-release",
+      "steps": [
+        { "type": "configure", "name": "windows-msvc" },
+        { "type": "build", "name": "windows-release" },
+        { "type": "test", "name": "windows-release" }
+      ]
+    },
+    {
+      "name": "ci-linux",
+      "steps": [
+        { "type": "configure", "name": "ci-linux" },
+        { "type": "build", "name": "ci-linux" },
+        { "type": "test", "name": "ci-linux" }
+      ]
+    },
+    {
+      "name": "ci-windows",
+      "steps": [
+        { "type": "configure", "name": "ci-windows" },
+        { "type": "build", "name": "ci-windows" },
+        { "type": "test", "name": "ci-windows" }
+      ]
+    }
+  ]
+}
