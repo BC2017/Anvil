@@ -33,6 +33,7 @@ anvil_set_project_warnings(anvil_project_warnings)
 anvil_enable_sanitizers(anvil_project_options)
 
 add_subdirectory(engine/core)
+add_subdirectory(engine/assets)
 
 if(ANVIL_BUILD_RENDERER)
     find_package(Vulkan 1.3 REQUIRED)

@@ -37,3 +37,13 @@ each preceding milestone.
 - [ ] Window surface and swapchain lifecycle
 - [ ] Command submission and synchronization primitives
 - [ ] Render graph and offscreen image tests
+
+## Milestone 3 — World and assets
+
+- [x] Stable asset identifiers and thread-safe registry
+- [ ] Versioned asset-registry persistence
+- [ ] Entity/component world model and hierarchical transforms
+- [ ] Versioned scene serialization and migrations
+- [ ] Asynchronous asset loading and dependency tracking
+- [ ] glTF, image, material, and shader importers
+- [ ] Cooked runtime formats and derived-data cache
