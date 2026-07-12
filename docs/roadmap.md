@@ -26,3 +26,14 @@ commands on Windows and Linux.
 Milestones 2–7 will cover rendering, worlds and assets, production rendering, editor workflows,
 gameplay systems, and packaging/hardening. Their detailed requirements will be refined at the end of
 each preceding milestone.
+
+## Milestone 2 — Rendering foundation
+
+- [x] Backend-neutral instance and capability API
+- [x] Vulkan 1.3 loader, validation, and adapter bootstrap
+- [ ] Physical-device selection and queue-family planning
+- [ ] Logical device and feature negotiation
+- [ ] GPU allocator and resource lifetime model
+- [ ] Window surface and swapchain lifecycle
+- [ ] Command submission and synchronization primitives
+- [ ] Render graph and offscreen image tests

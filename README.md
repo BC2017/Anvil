@@ -9,6 +9,7 @@ begins.
 - CMake 3.28 or newer
 - A C++23 compiler
 - Git (CMake fetches pinned dependencies on first configure)
+- Vulkan SDK 1.3 or newer when building the renderer
 - Windows: Visual Studio 2026 with the Desktop C++ workload
 - Linux: Clang, Ninja, and the SDL3 development prerequisites
 
