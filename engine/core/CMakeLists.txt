@@ -7,6 +7,7 @@ configure_file(
 add_library(anvil_core STATIC
     src/assert.cpp
     src/log.cpp
+    src/time.cpp
 )
 add_library(anvil::core ALIAS anvil_core)
 
