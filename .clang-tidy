@@ -1,0 +1,15 @@
+Checks: >
+  -*,
+  bugprone-*,
+  clang-analyzer-*,
+  concurrency-*,
+  cppcoreguidelines-avoid-goto,
+  cppcoreguidelines-pro-type-const-cast,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*
+WarningsAsErrors: ''
+HeaderFilterRegex: '^(engine|apps|tests)[\\/]'
+FormatStyle: file

@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Configure, build, and test
+        run: cmake --workflow --preset ci-windows
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install toolchain and SDL prerequisites
+        run: >-
+          sudo apt-get update && sudo apt-get install -y
+          clang clang-tidy ninja-build
+          libasound2-dev libdbus-1-dev libdecor-0-dev libpulse-dev libudev-dev
+          libwayland-dev libx11-dev libxcursor-dev libxext-dev libxi-dev
+          libxkbcommon-dev libxrandr-dev
+      - name: Configure, build, and test
+        run: cmake --workflow --preset ci-linux

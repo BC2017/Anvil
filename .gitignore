@@ -1,0 +1,22 @@
+# Build output
+/build/
+/out/
+
+# User-specific CMake settings
+CMakeUserPresets.json
+
+# IDEs and editors
+/.vs/
+/.vscode/
+/.idea/
+*.user
+*.suo
+
+# Compiler and analysis output
+compile_commands.json
+*.profraw
+*.profdata
+
+# Operating-system files
+.DS_Store
+Thumbs.db
