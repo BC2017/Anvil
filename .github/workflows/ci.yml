@@ -11,6 +11,7 @@ permissions:
 jobs:
   windows:
     runs-on: windows-latest
+    timeout-minutes: 30
     env:
       VULKAN_SDK_VERSION: 1.4.328.1
     steps:
@@ -30,11 +31,16 @@ jobs:
           "VULKAN_SDK=$sdkRoot" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           "VK_LAYER_PATH=$sdkRoot\Bin" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           "$sdkRoot\Bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-      - name: Configure, build, and test
-        run: cmake --workflow --preset ci-windows
+      - name: Configure
+        run: cmake --preset ci-windows
+      - name: Build
+        run: cmake --build --preset ci-windows
+      - name: Test
+        run: ctest --preset ci-windows
 
   linux:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - name: Install toolchain and SDL prerequisites
@@ -46,5 +52,9 @@ jobs:
           libwayland-dev libx11-dev libxcursor-dev libxext-dev libxfixes-dev libxi-dev
           libxkbcommon-dev libxrandr-dev
           libxss-dev libxtst-dev
-      - name: Configure, build, and test
-        run: cmake --workflow --preset ci-linux
+      - name: Configure
+        run: cmake --preset ci-linux
+      - name: Build
+        run: cmake --build --preset ci-linux
+      - name: Test
+        run: ctest --preset ci-linux
