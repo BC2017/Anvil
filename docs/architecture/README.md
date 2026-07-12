@@ -17,9 +17,16 @@ not depend on editor code, and platform-specific types do not cross public engin
 
 ## Current modules
 
-- `anvil::core`: diagnostics, assertions, versioning, and future low-level services.
+- `anvil::core`: diagnostics, assertions, versioning, and deterministic frame scheduling.
 - `anvil::platform`: SDL3-backed application lifecycle and event processing.
 - `anvil_sandbox`: an executable smoke test and future vertical-slice playground.
 
 New modules should expose a narrow public API under `include/anvil/<module>/`, keep implementation
 under `src/`, and provide an `anvil::<module>` CMake alias.
+
+## Runtime lifecycle
+
+The platform application owns the operating-system event pump and monotonic frame clock. Client
+hooks receive start and stop notifications, zero or more fixed simulation updates, and one frame
+update containing interpolation and timing diagnostics. Exit requests are explicit and may be made
+from any lifecycle hook running on the application thread.

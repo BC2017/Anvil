@@ -16,12 +16,12 @@ commands on Windows and Linux.
 
 ## Milestone 1 — Core and platform
 
-- Application lifecycle and fixed-timestep main loop
-- Input action mapping and controller support
-- Math primitives and transforms
-- Job system and thread-safe queues
-- Memory tracking and lightweight profiling
-- Filesystem abstraction and event infrastructure
+- [x] Application lifecycle and fixed-timestep main loop
+- [ ] Input action mapping and controller support
+- [ ] Math primitives and transforms
+- [ ] Job system and thread-safe queues
+- [ ] Memory tracking and lightweight profiling
+- [ ] Filesystem abstraction and event infrastructure
 
 Milestones 2–7 will cover rendering, worlds and assets, production rendering, editor workflows,
 gameplay systems, and packaging/hardening. Their detailed requirements will be refined at the end of
