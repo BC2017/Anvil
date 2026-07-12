@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: cmake --build --preset ci-windows
       - name: Test
-        run: ctest --preset ci-windows
+        run: ctest --preset ci-windows -LE requires_vulkan_icd
 
   linux:
     runs-on: ubuntu-latest

@@ -16,4 +16,5 @@ if(TARGET anvil::render)
     anvil_enable_static_analysis(anvil_render_tests)
 
     add_test(NAME anvil.render.bootstrap COMMAND anvil_render_tests)
+    set_tests_properties(anvil.render.bootstrap PROPERTIES LABELS "requires_vulkan_icd")
 endif()
