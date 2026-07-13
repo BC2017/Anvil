@@ -43,6 +43,23 @@ directory. To run the animated gameplay-system visualizer after a Windows debug 
 The visualizer shows the live fixed-step tick, compiled gameplay-system order, activity, and an
 animated scene extracted during the post-simulation phase. Close its window to stop it.
 
+## Install and package
+
+Create a staged Release install on Windows:
+
+```powershell
+cmake --install build/windows-msvc --config Release --prefix build/stage
+```
+
+Create a versioned ZIP and SHA-256 checksum:
+
+```powershell
+cpack --config build/windows-msvc/CPackConfig.cmake -C Release
+```
+
+Packages are written to `build/windows-msvc/packages/` and contain the runtime, license, README,
+and a machine-readable `anvil-runtime.json` manifest.
+
 ## Useful options
 
 - `ANVIL_BUILD_SANDBOX`: build the SDL3 platform smoke-test application.

@@ -67,3 +67,10 @@ inspector, asset, and viewport tools share undo/redo and saved-state behavior.
 Gameplay systems execute in explicit pre-simulation, simulation, and post-simulation phases. Named
 dependencies compile into a deterministic order before execution. Systems receive fixed-step time
 and tick identity but remain independent of platform, renderer, and editor implementations.
+
+## Distribution boundary
+
+The supported runtime layout is defined by CMake install rules rather than copied directly from a
+developer build tree. Every staged runtime includes a schema-versioned manifest describing its
+engine version, configuration, operating system, and architecture; packaging validation executes
+the installed binary from that layout.

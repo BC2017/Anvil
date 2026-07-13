@@ -79,3 +79,15 @@ each preceding milestone.
 - [ ] Spatial audio and listener/source components
 - [ ] Deterministic random streams, recording, and replay
 - [ ] Save-game state and versioned migrations
+
+## Milestone 7 — Packaging and hardening
+
+- [x] Reproducible install tree and versioned runtime manifest
+- [x] Archive packaging with installed-runtime smoke coverage
+- [ ] Crash handling, minidumps, and structured diagnostic bundles
+- [ ] Release logging, configuration, and data-directory policy
+- [ ] Performance budgets and repeatable benchmark suites
+- [ ] Dependency auditing and security response policy
+- [ ] Debug symbol publishing and platform code signing
+- [ ] Automated tagged releases with checksums and provenance
+- [ ] Sample project, deployment guide, and compatibility matrix
