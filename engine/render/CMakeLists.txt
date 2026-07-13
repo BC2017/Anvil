@@ -1,5 +1,6 @@
 add_library(anvil_render STATIC
     src/render_instance.cpp
+    src/scene_types.cpp
 )
 add_library(anvil::render ALIAS anvil_render)
 
