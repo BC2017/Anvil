@@ -16,6 +16,17 @@ anvil_enable_static_analysis(anvil_assets_tests)
 
 add_test(NAME anvil.assets COMMAND anvil_assets_tests)
 
+if(TARGET anvil::editor)
+    add_executable(anvil_editor_tests
+        editor/command_history_tests.cpp
+    )
+    target_link_libraries(anvil_editor_tests PRIVATE anvil::editor anvil_project_warnings)
+    set_target_properties(anvil_editor_tests PROPERTIES FOLDER "Tests")
+    anvil_enable_static_analysis(anvil_editor_tests)
+
+    add_test(NAME anvil.editor.history COMMAND anvil_editor_tests)
+endif()
+
 if(TARGET anvil::render)
     add_executable(anvil_render_data_tests
         render/render_data_tests.cpp

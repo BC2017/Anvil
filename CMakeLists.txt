@@ -14,6 +14,7 @@ include(FetchContent)
 
 option(ANVIL_BUILD_SANDBOX "Build the SDL3 sandbox application" ON)
 option(ANVIL_BUILD_RENDERER "Build rendering modules" ON)
+option(ANVIL_BUILD_EDITOR "Build editor modules" ON)
 option(ANVIL_ENABLE_ASAN "Enable AddressSanitizer where supported" OFF)
 option(ANVIL_ENABLE_UBSAN "Enable UndefinedBehaviorSanitizer where supported" OFF)
 option(ANVIL_ENABLE_CLANG_TIDY "Run clang-tidy while compiling" OFF)
@@ -38,6 +39,10 @@ add_subdirectory(engine/assets)
 if(ANVIL_BUILD_RENDERER)
     find_package(Vulkan 1.3 REQUIRED)
     add_subdirectory(engine/render)
+endif()
+
+if(ANVIL_BUILD_EDITOR)
+    add_subdirectory(tools/editor)
 endif()
 
 if(ANVIL_BUILD_SANDBOX)
