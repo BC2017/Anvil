@@ -35,6 +35,7 @@ anvil_enable_sanitizers(anvil_project_options)
 
 add_subdirectory(engine/core)
 add_subdirectory(engine/assets)
+add_subdirectory(engine/gameplay)
 
 if(ANVIL_BUILD_RENDERER)
     find_package(Vulkan 1.3 REQUIRED)

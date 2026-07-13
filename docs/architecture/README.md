@@ -19,6 +19,7 @@ not depend on editor code, and platform-specific types do not cross public engin
 
 - `anvil::core`: diagnostics, assertions, versioning, and deterministic frame scheduling.
 - `anvil::assets`: stable asset identity, logical-path indexing, and import metadata.
+- `anvil::gameplay`: deterministic fixed-step system scheduling and execution.
 - `anvil::platform`: SDL3-backed application lifecycle and event processing.
 - `anvil::render`: engine-owned rendering capabilities with a private Vulkan implementation.
 - `anvil_sandbox`: an executable smoke test and future vertical-slice playground.
@@ -32,6 +33,10 @@ The platform application owns the operating-system event pump and monotonic fram
 hooks receive start and stop notifications, zero or more fixed simulation updates, and one frame
 update containing interpolation and timing diagnostics. Exit requests are explicit and may be made
 from any lifecycle hook running on the application thread.
+
+The platform also offers a deliberately small debug canvas using engine-owned colors, rectangles,
+lines, and text. It supports bootstrap diagnostics and visual smoke tests while keeping SDL types
+private; production 3D rendering remains the responsibility of `anvil::render`.
 
 ## Rendering boundary
 
@@ -56,3 +61,9 @@ editor reimport or asynchronous update.
 Editor code lives under `tools/` and depends on public engine modules. Engine runtime modules never
 depend on editor targets. All document mutations flow through named commands so hierarchy,
 inspector, asset, and viewport tools share undo/redo and saved-state behavior.
+
+## Gameplay boundary
+
+Gameplay systems execute in explicit pre-simulation, simulation, and post-simulation phases. Named
+dependencies compile into a deterministic order before execution. Systems receive fixed-step time
+and tick identity but remain independent of platform, renderer, and editor implementations.
