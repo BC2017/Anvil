@@ -25,7 +25,7 @@ struct FixedUpdateContext {
 struct SystemDescriptor {
     std::string name;
     SystemPhase phase{SystemPhase::simulation};
-    std::vector<std::string> runs_after;
+    std::vector<std::string> runs_after{};
 };
 
 using FixedUpdateCallback = std::function<void(const FixedUpdateContext&)>;
