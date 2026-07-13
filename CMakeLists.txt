@@ -72,3 +72,7 @@ endif()
 if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
+
+if(TARGET anvil_sandbox)
+    include(AnvilPackaging)
+endif()
