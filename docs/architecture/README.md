@@ -40,6 +40,10 @@ callbacks, and loader interaction remain private implementation details. The ren
 runtime support rather than assuming that the SDK header version matches the installed loader or
 physical devices.
 
+Render-facing scene data uses linear colors and explicit physical units. Authoring values are
+normalized before GPU extraction, and every correction remains observable so editor tooling can
+identify malformed source assets instead of allowing NaNs or invalid ranges into shaders.
+
 ## Asset boundary
 
 Asset references cross subsystem and serialization boundaries as stable 128-bit IDs. Source paths

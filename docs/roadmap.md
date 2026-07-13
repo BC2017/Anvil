@@ -47,3 +47,14 @@ each preceding milestone.
 - [ ] Asynchronous asset loading and dependency tracking
 - [ ] glTF, image, material, and shader importers
 - [ ] Cooked runtime formats and derived-data cache
+
+## Milestone 4 — Production rendering
+
+- [x] Linear-color PBR material contract and normalization
+- [x] Physically unitized directional, point, and spot lights
+- [ ] Render-facing scene extraction and stable resource handles
+- [ ] Physically based shader and material texture bindings
+- [ ] Directional and local-light shadows
+- [ ] HDR targets, exposure, and tone mapping
+- [ ] Frustum culling and instanced submission
+- [ ] Skeletal animation and quality tiers
