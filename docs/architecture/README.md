@@ -50,3 +50,9 @@ Asset references cross subsystem and serialization boundaries as stable 128-bit 
 are normalized project-relative metadata used by tools; they are never the durable identity of an
 asset. Registry reads return value snapshots so callers do not retain pointers invalidated by an
 editor reimport or asynchronous update.
+
+## Editor boundary
+
+Editor code lives under `tools/` and depends on public engine modules. Engine runtime modules never
+depend on editor targets. All document mutations flow through named commands so hierarchy,
+inspector, asset, and viewport tools share undo/redo and saved-state behavior.

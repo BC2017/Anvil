@@ -58,3 +58,13 @@ each preceding milestone.
 - [ ] HDR targets, exposure, and tone mapping
 - [ ] Frustum culling and instanced submission
 - [ ] Skeletal animation and quality tiers
+
+## Milestone 5 — Editor
+
+- [x] Bounded undo/redo history and saved-state tracking
+- [ ] Composite transactions and continuous-edit coalescing
+- [ ] Scene hierarchy, selection, and inspector
+- [ ] Viewport camera, picking, and transform gizmos
+- [ ] Asset browser and import settings
+- [ ] Play-in-editor with isolated runtime state
+- [ ] Scene/prefab workflows and hot reload
