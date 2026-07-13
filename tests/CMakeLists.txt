@@ -16,6 +16,15 @@ anvil_enable_static_analysis(anvil_assets_tests)
 
 add_test(NAME anvil.assets COMMAND anvil_assets_tests)
 
+add_executable(anvil_gameplay_tests
+    gameplay/system_graph_tests.cpp
+)
+target_link_libraries(anvil_gameplay_tests PRIVATE anvil::gameplay anvil_project_warnings)
+set_target_properties(anvil_gameplay_tests PROPERTIES FOLDER "Tests")
+anvil_enable_static_analysis(anvil_gameplay_tests)
+
+add_test(NAME anvil.gameplay.system_graph COMMAND anvil_gameplay_tests)
+
 if(TARGET anvil::editor)
     add_executable(anvil_editor_tests
         editor/command_history_tests.cpp

@@ -1,9 +1,11 @@
 #pragma once
 
 #include <anvil/core/time.hpp>
+#include <anvil/platform/debug_canvas.hpp>
 
 #include <memory>
 #include <string>
+#include <string_view>
 
 namespace anvil::platform {
 
@@ -39,8 +41,10 @@ class Application final {
 
     [[nodiscard]] int run(ApplicationHooks& hooks);
     void request_exit() noexcept;
+    void set_title(std::string_view title);
 
     [[nodiscard]] bool exit_requested() const noexcept;
+    [[nodiscard]] DebugCanvas& debug_canvas();
 
   private:
     struct State;

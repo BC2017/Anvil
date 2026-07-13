@@ -1,8 +1,14 @@
 # Anvil
 
-Anvil is a work-in-progress, cross-platform 3D game engine. The project is currently in
-Milestone 0: establishing a reproducible, tested engineering foundation before renderer work
-begins.
+Anvil is a work-in-progress, cross-platform 3D game engine. The project is being built as a series
+of tested vertical foundations spanning platform, rendering, assets, editor, and gameplay systems.
+
+## Start here
+
+New contributors should read the [code tour](docs/code-tour.md) for a file-by-file guide and the
+[architecture overview](docs/architecture/README.md) for subsystem boundaries and runtime data
+flow. Public C++ headers under `include/anvil/` contain the detailed contracts for each type and
+function; implementation comments focus on decisions that are not apparent from the code itself.
 
 ## Prerequisites
 
@@ -28,15 +34,20 @@ cmake --workflow --preset linux-debug
 ```
 
 The first configure downloads the pinned SDL3 source release into the ignored `build/`
-directory. To run the sandbox after a Windows debug build:
+directory. To run the animated gameplay-system visualizer after a Windows debug build:
 
 ```powershell
 ./build/windows-msvc/apps/sandbox/Debug/AnvilSandbox.exe
 ```
 
+The visualizer shows the live fixed-step tick, compiled gameplay-system order, activity, and an
+animated scene extracted during the post-simulation phase. Close its window to stop it.
+
 ## Useful options
 
 - `ANVIL_BUILD_SANDBOX`: build the SDL3 platform smoke-test application.
+- `ANVIL_BUILD_EDITOR`: build editor foundation modules.
+- `ANVIL_BUILD_RENDERER`: build Vulkan rendering modules.
 - `ANVIL_WARNINGS_AS_ERRORS`: reject warnings in Anvil-owned code.
 - `ANVIL_ENABLE_ASAN`: enable AddressSanitizer where supported.
 - `ANVIL_ENABLE_UBSAN`: enable UndefinedBehaviorSanitizer where supported.

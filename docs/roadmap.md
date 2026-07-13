@@ -68,3 +68,14 @@ each preceding milestone.
 - [ ] Asset browser and import settings
 - [ ] Play-in-editor with isolated runtime state
 - [ ] Scene/prefab workflows and hot reload
+
+## Milestone 6 — Gameplay systems
+
+- [x] Deterministic fixed-step system graph and execution phases
+- [ ] Entity/component queries and deferred structural changes
+- [ ] Input actions and gameplay command buffering
+- [ ] Native and managed scripting lifecycle
+- [ ] Physics integration and collision events
+- [ ] Spatial audio and listener/source components
+- [ ] Deterministic random streams, recording, and replay
+- [ ] Save-game state and versioned migrations
